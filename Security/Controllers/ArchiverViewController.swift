@@ -62,20 +62,26 @@ class ArchiverViewController: UIViewController {
         present(documentPickerController, animated: true, completion: nil)
     }
 
+    // Метод, вызываемый по нажатию кнопки архивации/разархивации
     @IBAction func archiveButtonAction(_ sender: Any) {
         guard let url = url else {
             return
         }
         
+        // Если расширение файла .x, то разархивировать
         if url.pathExtension == "x" {
             if var data = try? Data(contentsOf: url) {
+                // Расшифрока файла
                 data = vegenere(keyTextField.text ?? " ", data: data, crypt: false)
                 
+                // Обработка байтов по очереди
                 while data.count > 0 {
+                    // Считывание первых 252 байтов для получения пути к файлу
                     var pathBuffer = [UInt8](repeating: 0, count: 252)
                     data.copyBytes(to: &pathBuffer, count: 252)
                     data = data.dropFirst(252)
-                                        
+                              
+                    // Считывание 4х байт размера файла
                     var fileSizeBuffer = [UInt8](repeating: 0, count: 4)
                     data.copyBytes(to: &fileSizeBuffer, count: 4)
                     data = data.dropFirst(4)
@@ -86,6 +92,7 @@ class ArchiverViewController: UIViewController {
                     fileSize = (fileSize << 8) | Int(fileSizeBuffer[1])
                     fileSize = (fileSize << 8) | Int(fileSizeBuffer[0])
                     
+                    // Считывание файла
                     var fileBuffer = [UInt8](repeating: 0, count: fileSize)
                     data.copyBytes(to: &fileBuffer, count: fileSize)
                     data = data.dropFirst(fileSize)
@@ -96,35 +103,45 @@ class ArchiverViewController: UIViewController {
                         fileData.append(byte)
                     }
                     
+                    // Получение относительного пути к файлу
                     if var path = String(bytes: pathBuffer, encoding: .ascii) {
                         path = url.deletingPathExtension().path + path
                         path = path.replacingOccurrences(of: "*", with: "")
-                                                                        
+                                        
+                        // Получение пути к директории, содержащей файл
                         let folderURL = URL(fileURLWithPath: path).deletingLastPathComponent()
                         
+                        // Попыка создать директорию и все промежуточные директории
                         try? FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
                         
+                        // Создание файла
                         FileManager.default.createFile(atPath: path, contents: fileData, attributes: nil)
                     }
                 }
                 
+                // Удаление архива
                 try? FileManager.default.removeItem(at: url)
             }
         } else {
+            // Получение списка всех файлов
             let allFiles = getAllFiles(atPath: url.deletingLastPathComponent().path + "/")
             
             var archive = Data()
             
+            // Перебор по файлам
             for file in allFiles {
+                // Попытка открытия файла
                 if let fileData = try? Data(contentsOf: URL(fileURLWithPath: file)) {
+                    // Создание заголовка с путем к файлу
                     var header = "\(file.replacingOccurrences(of: url.deletingLastPathComponent().path, with: ""))"
                     
+                    // Дополнение пути до длины в 252 байта
                     while header.count < 252 {
                         header.append("*")
                     }
                     
                     if var headerData = header.data(using: .ascii) {
-                        
+                        // Получение размера файла
                         var fileSize = UInt32(fileData.count)
                         
                         for _ in 0 ..< 4 {
@@ -134,12 +151,14 @@ class ArchiverViewController: UIViewController {
                             fileSize = fileSize >> 8
                         }
                         
+                        // Добавление заголовка и данных в архив
                         archive.append(headerData)
                         archive.append(fileData)
                     }
                 }
             }
             
+            // Удаление файлов и папок
             for file in allFiles {
                 try? FileManager.default.removeItem(atPath: file)
                 
@@ -152,12 +171,15 @@ class ArchiverViewController: UIViewController {
             
             let archivePath = url.deletingLastPathComponent().path + "/archive.x"
             
+            // Шифрование архива
             archive = vegenere(keyTextField.text ?? " ", data: archive, crypt: true)
             
+            // Сохранение архива
             try? archive.write(to: URL(fileURLWithPath: archivePath))
         }
     }
  
+    // Получение массива байтов
     func getBytes(fromPath: String) -> [UInt8]? {
         if let data = NSData(contentsOfFile: fromPath) {
             var buffer = [UInt8](repeating: 0, count: data.length)
@@ -169,6 +191,7 @@ class ArchiverViewController: UIViewController {
         }
     }
 
+    // Получение всех файлов и поддиректорий в директории (более подробно описано в задании 1)
     func getFolderContent(atPath: String) -> [[String]]? {
         do {
             let fileManager = FileManager.default
@@ -197,6 +220,7 @@ class ArchiverViewController: UIViewController {
         return nil
     }
     
+    // Получение всех файлов в директории (более подробно описано в задании 1)
     func getAllFiles(atPath: String) -> [String] {
         guard let content = getFolderContent(atPath: atPath) else {
             return []
@@ -219,6 +243,8 @@ class ArchiverViewController: UIViewController {
         return result
     }
     
+    // Шифрование методом Виджинера. В качетсве алфавита используется таблица символов ASCII
+    // (более подробно описано в задании 5)
     func vegenere(_ key: String, data: Data, crypt: Bool) -> Data {
         var result = Data()
         

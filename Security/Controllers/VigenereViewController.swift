@@ -35,9 +35,12 @@ class VigenereViewController: UIViewController {
         outputTextView.text = vigenere(keyTextField.text ?? "", text: inputTextView.text, crypt: false)
     }
     
+    // Функция, шифрующая и разшифровывающая текст с помощью указанного ключа
     func vigenere(_ key: String, text: String, crypt: Bool) -> String {
+        // Алфавит
         let alphabet = ["А", "Б", "В", "Г", "Д", "Е", "Ё", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ы", "Ь", "Э", "Ю", "Я"]
         
+        // Преобразование ключа и текста в заглавные буквы
         let key = key.uppercased()
         let text = text.uppercased()
         
@@ -45,16 +48,21 @@ class VigenereViewController: UIViewController {
         
         var index = 0
         
+        // Перебор символов в тексте
         for character in text {
+            // Получение номера символа из текста в алфавите
             if let characterIndex = alphabet.firstIndex(of: String(character)) {
                 let keyIndex = key.index(key.startIndex, offsetBy: index % key.count)
                 let keyCharacter = key[keyIndex]
                 
+                // Получение номера символа из ключа в алфавите
                 if let keyCharacterIndex = alphabet.firstIndex(of: String(keyCharacter)) {
                     if crypt {
+                        // Шифрование суммированием по модулю
                         let newCharacterIndex = (characterIndex + keyCharacterIndex) % alphabet.count
                         result.append(alphabet[newCharacterIndex])
                     } else {
+                        // Разшифровывание вычитанием по модулю
                         var newCharacterIndex = (characterIndex - keyCharacterIndex)
                         
                         if newCharacterIndex < 0 {
