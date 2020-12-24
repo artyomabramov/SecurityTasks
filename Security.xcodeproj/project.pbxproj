@@ -9,21 +9,32 @@
 /* Begin PBXBuildFile section */
 		E567148B25938F2700CFC9C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567148A25938F2700CFC9C1 /* AppDelegate.swift */; };
 		E567148D25938F2700CFC9C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567148C25938F2700CFC9C1 /* SceneDelegate.swift */; };
-		E567148F25938F2700CFC9C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567148E25938F2700CFC9C1 /* ViewController.swift */; };
+		E567148F25938F2700CFC9C1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567148E25938F2700CFC9C1 /* MenuViewController.swift */; };
 		E567149225938F2700CFC9C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E567149025938F2700CFC9C1 /* Main.storyboard */; };
 		E567149425938F2900CFC9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E567149325938F2900CFC9C1 /* Assets.xcassets */; };
 		E567149725938F2900CFC9C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E567149525938F2900CFC9C1 /* LaunchScreen.storyboard */; };
+		E56714A52593938100CFC9C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56714A42593938100CFC9C1 /* RootViewController.swift */; };
+		E56714A8259395C700CFC9C1 /* FileSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56714A7259395C700CFC9C1 /* FileSearchViewController.swift */; };
+		E56714B12593B6CD00CFC9C1 /* SteganographyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56714B02593B6CD00CFC9C1 /* SteganographyViewController.swift */; };
+		E5C4AFC32593EBF200EECD18 /* VigenereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C4AFC22593EBF200EECD18 /* VigenereViewController.swift */; };
+		E5C4AFC62594010700EECD18 /* ArchiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C4AFC52594010700EECD18 /* ArchiverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E567148725938F2700CFC9C1 /* Security.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Security.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E567148A25938F2700CFC9C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E567148C25938F2700CFC9C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E567148E25938F2700CFC9C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E567148E25938F2700CFC9C1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E567149125938F2700CFC9C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E567149325938F2900CFC9C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E567149625938F2900CFC9C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E567149825938F2900CFC9C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E567149F25938F3200CFC9C1 /* Security.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Security.entitlements; sourceTree = "<group>"; };
+		E56714A42593938100CFC9C1 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		E56714A7259395C700CFC9C1 /* FileSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSearchViewController.swift; sourceTree = "<group>"; };
+		E56714B02593B6CD00CFC9C1 /* SteganographyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteganographyViewController.swift; sourceTree = "<group>"; };
+		E5C4AFC22593EBF200EECD18 /* VigenereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigenereViewController.swift; sourceTree = "<group>"; };
+		E5C4AFC52594010700EECD18 /* ArchiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +67,29 @@
 		E567148925938F2700CFC9C1 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				E567149F25938F3200CFC9C1 /* Security.entitlements */,
 				E567148A25938F2700CFC9C1 /* AppDelegate.swift */,
 				E567148C25938F2700CFC9C1 /* SceneDelegate.swift */,
-				E567148E25938F2700CFC9C1 /* ViewController.swift */,
+				E56714A22593936800CFC9C1 /* Controllers */,
 				E567149025938F2700CFC9C1 /* Main.storyboard */,
 				E567149325938F2900CFC9C1 /* Assets.xcassets */,
 				E567149525938F2900CFC9C1 /* LaunchScreen.storyboard */,
 				E567149825938F2900CFC9C1 /* Info.plist */,
 			);
 			path = Security;
+			sourceTree = "<group>";
+		};
+		E56714A22593936800CFC9C1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E567148E25938F2700CFC9C1 /* MenuViewController.swift */,
+				E56714A42593938100CFC9C1 /* RootViewController.swift */,
+				E56714A7259395C700CFC9C1 /* FileSearchViewController.swift */,
+				E56714B02593B6CD00CFC9C1 /* SteganographyViewController.swift */,
+				E5C4AFC22593EBF200EECD18 /* VigenereViewController.swift */,
+				E5C4AFC52594010700EECD18 /* ArchiverViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E567148F25938F2700CFC9C1 /* ViewController.swift in Sources */,
+				E567148F25938F2700CFC9C1 /* MenuViewController.swift in Sources */,
+				E5C4AFC32593EBF200EECD18 /* VigenereViewController.swift in Sources */,
+				E5C4AFC62594010700EECD18 /* ArchiverViewController.swift in Sources */,
 				E567148B25938F2700CFC9C1 /* AppDelegate.swift in Sources */,
+				E56714A52593938100CFC9C1 /* RootViewController.swift in Sources */,
+				E56714B12593B6CD00CFC9C1 /* SteganographyViewController.swift in Sources */,
+				E56714A8259395C700CFC9C1 /* FileSearchViewController.swift in Sources */,
 				E567148D25938F2700CFC9C1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,15 +316,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Security/Security.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2686KEVMM9;
 				INFOPLIST_FILE = Security/Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.artyomabramov.Security;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -305,15 +338,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Security/Security.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2686KEVMM9;
 				INFOPLIST_FILE = Security/Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.artyomabramov.Security;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
